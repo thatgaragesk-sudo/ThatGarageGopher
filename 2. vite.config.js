@@ -1,4 +1,4 @@
-export const viteConfig = `import { defineConfig } from 'vite';
+viteConfig = `import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 
