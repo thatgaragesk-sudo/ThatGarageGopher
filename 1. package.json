@@ -1,4 +1,4 @@
-`{
+{
 "name": "that-garage-gopher",
 "version": "1.0.0",
 "private": true,
@@ -16,4 +16,4 @@
 "@vitejs/plugin-react": "^4.0.0",
 "vite": "^5.0.0"
 }
- }` 
+} 
