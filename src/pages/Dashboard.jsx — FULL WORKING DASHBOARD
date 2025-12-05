@@ -1,0 +1,59 @@
+export const dashboardJsx = `import React from 'react';
+import '../styles.css';
+
+
+const BRAND = {
+charcoal: '#1A1A1A',
+orange: '#FF6A00',
+silver: '#B7B7B7',
+white: '#FFFFFF'
+};
+
+
+export default function Dashboard() {
+return (
+<div style={{fontFamily:'Inter, sans-serif'}} className="min-h-screen bg-white">
+<header className="flex items-center justify-between p-4 border-b" style={{background: BRAND.charcoal}}>
+<div className="flex items-center gap-3">
+<div className="w-12 h-12 rounded-full flex items-center justify-center" style={{background: BRAND.orange}}>
+<span className="text-white font-bold">TG</span>
+</div>
+<div className="text-white">
+<h1 className="text-xl font-bold">That Garage Gopher</h1>
+<p className="text-sm opacity-80">Growth & Ops Dashboard</p>
+</div>
+</div>
+</header>
+
+
+<main className="p-6 grid grid-cols-12 gap-6">
+<aside className="col-span-3 bg-gray-50 p-4 rounded-lg shadow-sm">
+<h3 className="font-semibold">Quick Actions</h3>
+<div className="mt-3 space-y-2 text-sm">
+<button className="block w-full text-left">Create Skool Post</button>
+<button className="block w-full text-left">Launch Promo</button>
+<button className="block w-full text-left">Generate Lead Magnet</button>
+</div>
+</aside>
+
+
+<section className="col-span-9 space-y-4">
+<Card title="Members" value="1,254" subtitle="Active past 30 days" />
+<Card title="MRR" value="$12.6k" subtitle="Monthly Recurring Revenue" highlight />
+<Card title="New Leads" value="312" subtitle="Last 7 days" />
+</section>
+</main>
+</div>
+);
+}
+
+
+function Card({title, value, subtitle, highlight}){
+return (
+<div className={`p-4 rounded-lg shadow-sm ${highlight ? '' : 'bg-white'}`} style={{background: highlight ? BRAND.orange : BRAND.white}}>
+<div className={`${highlight ? 'text-white' : 'text-gray-600'} text-sm`}>{title}</div>
+<div className={`${highlight ? 'text-white' : 'text-black'} text-2xl font-bold`}>{value}</div>
+<div className={`${highlight ? 'text-white/90' : 'text-gray-500'} text-xs`}>{subtitle}</div>
+</div>
+);
+}`;
