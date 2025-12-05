@@ -1,4 +1,4 @@
-export const packageJson = `{
+export const packageJson = `()
 "name": "that-garage-gopher",
 "version": "1.0.0",
 "private": true,
