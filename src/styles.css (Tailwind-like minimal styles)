@@ -1,107 +1,29 @@
 export const stylesCss = `body { margin: 0; }
-{
-"version": 2,
-"builds": [{ "src": "vite.config.js", "use": "@vercel/static-build"}],
-"routes": [{ "src": "/(.*)", "dest": "/" }]
-}
-
-
-
-
-// === Router Wiring for /admin ===
-// File: src/router.jsx
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "./App";
-import Admin from "./pages/Admin";
-
-
-export default function Router() {
-return (
-<BrowserRouter>
-<Routes>
-<Route path="/" element={<App />} />
-<Route path="/admin" element={<Admin />} />
-</Routes>
-</BrowserRouter>
-);
-}
-
-
-// === Admin Authentication (Simple Passcode) ===
-// File: src/pages/AdminAuthGate.jsx
-import React, { useState } from "react";
-
-
-export default function AdminAuthGate({ children }) {
-const [pass, setPass] = useState("");
-const [ok, setOk] = useState(false);
-
-
-const check = () => {
-if (pass === import.meta.env.VITE_ADMIN_KEY) setOk(true);
-};
-
-
-if (ok) return children;
-
-
-return (
-<div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-8">
-<div className="bg-white shadow p-6 rounded-xl w-full max-w-sm">
-<h2 className="text-xl font-semibold mb-4">Admin Access</h2>
-<input
-type="password"
-value={pass}
-onChange={(e) => setPass(e.target.value)}
-className="border rounded w-full p-2 mb-4"
-placeholder="Enter admin key"
-/>
-<button onClick={check} className="bg-black text-white w-full p-2 rounded-md">
-Enter
-</button>
-</div>
-</div>
-);
-}
-
-
-// Wrap Admin Page in Gate
-// File: src/pages/Admin.jsx (wrap export)
-// export default function Admin() becomes:
-// export default function Admin() {
-// return (
-// <AdminAuthGate>
-// <div> ... existing admin content ... </div>
-// </AdminAuthGate>
-// );
-// }
-
-
-// === UI Enhancements: Sidebar Layout ===
-// File: src/components/AdminLayout.jsx
-import React from "react";
-import { Link } from "react-router-dom";
-
-
-export default function AdminLayout({ children }) {
-return (
-<div className="flex min-h-screen">
-<aside className="w-64 bg-black text-white p-6 space-y-4">
-<h2 className="text-2xl font-bold mb-6">TG Admin</h2>
-<nav className="space-y-2">
-<Link to="/admin" className="block hover:opacity-75">Dashboard</Link>
-<Link to="/admin/email" className="block hover:opacity-75">Email Builder</Link>
-<Link to="/admin/content" className="block hover:opacity-75">Content Calendar</Link>
-<Link to="/admin/campaigns" className="block hover:opacity-75">Campaign Templates</Link>
-<Link to="/admin/social" className="block hover:opacity-75">Social Generator</Link>
-</nav>
-</aside>
-<main className="flex-1 p-8 bg-gray-100">{children}</main>
-</div>
-);
-}
-
-
-// === Deployment Environment Variables Template ===
-// File: .env.example
-VITE_ADMIN_KEY=yourSecurePasscodeHere
+.text-white { color: #fff; }
+.text-black { color: #000; }
+.text-gray-600 { color: #4b5563; }
+.text-gray-500 { color: #6b7280; }
+.text-sm { font-size: .875rem; }
+.text-xs { font-size: .75rem; }
+.text-2xl { font-size: 1.5rem; }
+.font-bold { font-weight: 700; }
+.flex { display:flex; }
+.grid { display:grid; }
+.items-center { align-items:center; }
+.justify-between { justify-content:space-between; }
+.p-4 { padding:1rem; }
+.p-6 { padding:1.5rem; }
+.mt-3 { margin-top:.75rem; }
+.space-y-2>*+* { margin-top:.5rem; }
+.space-y-4>*+* { margin-top:1rem; }
+.gap-3 { gap:.75rem; }
+.gap-6 { gap:1.5rem; }
+.rounded-lg { border-radius:.5rem; }
+.shadow-sm { box-shadow:0 1px 2px rgba(0,0,0,.1); }
+.border-b { border-bottom:1px solid #e5e7eb; }
+.bg-white { background:#fff; }
+.bg-gray-50 { background:#f9fafb; }
+.min-h-screen { min-height:100vh; }
+.grid-cols-12 { grid-template-columns:repeat(12, minmax(0,1fr)); }
+.col-span-3 { grid-column:span 3 / span 3; }
+.col-span-9 { grid-column:span 9 / span 9; }`;
